@@ -12,3 +12,4 @@
 */
 
 Route::get('/', 'PostController@index')->name('post.index');
+Route::get('/posts/{post}/show', 'PostController@show')->name('post.show');

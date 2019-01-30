@@ -41,4 +41,10 @@
 
 
 @endsection
+
+@section('pagination')
+
+        {{$posts->links('vendor.pagination.default')}}
+    
+ @endsection
    
