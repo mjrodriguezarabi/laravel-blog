@@ -16,7 +16,7 @@
                             <span class="category text-capitalize">{{$post->category->name}}</span>
                         </div>
                     </header>
-                    <h1>{{$post->title}}</h1>
+                    <h1><a class="text-uppercase c-green" href="{{route('post.show', $post->id)}}">{{$post->title}}</a></h1>
                     <div class="divider"></div>
                     <p>{{$post->excerpt}}</p>
                     <footer class="container-flex space-between">
