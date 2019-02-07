@@ -17,8 +17,13 @@ Route::get('/posts/{post}/show', 'PostController@show')->name('post.show');
 /**
  * Administration Routes
  */
-Route::group(['prefix' => 'admin'], function(){
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
 
 	Route::get('/', 'Admin\AdminController@index')->name('admin.index');
 
+	Route::resource('/posts', 'PostController');
+	//Route::get('/post/create', 'Admin\PostController@create')->name('post.create');
+
 });
+
+Route::auth();

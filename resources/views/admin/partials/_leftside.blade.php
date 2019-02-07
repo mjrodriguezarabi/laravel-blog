@@ -9,7 +9,7 @@
           <img src="{{asset('adminlte/dist/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>Alexander Pierce</p>
+          <p>{{Auth::user()->name}}</p>
           <!-- Status -->
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
@@ -29,12 +29,35 @@
 
       <!-- Sidebar Menu -->
       <ul class="sidebar-menu" data-widget="tree">
-        <li class="header">HEADER</li>
-        <!-- Optionally, you can add icons to the links -->
-        <li class="active"><a href="#"><i class="fa fa-link"></i> <span>Link</span></a></li>
-        <li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li>
+        <li class="header">PANEL DE CONTROL</li>
+        
+        <li {{request()->is('admin') ? 'class=active' : ''}}>
+          <a href="{{route('admin.index')}}"><i class="fa fa-dashboard"></i>Dashboard</a>
+        </li>
         <li class="treeview">
-          <a href="#"><i class="fa fa-link"></i> <span>Multilevel</span>
+          <a href="#"><i class="fas fa-bookmark"></i> <span>Categorías</span>
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="#">Link in level 2</a></li>
+            <li><a href="#">Link in level 2</a></li>
+          </ul>
+        </li>
+        <li class="treeview {{request()->is('admin/posts') ? 'active' : ''}}">
+          <a href="#"><i class="far fa-clipboard"></i> <span>Posts</span>
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="{{route('posts.create')}}">Nuevo</a></li>
+            <li {{request()->is('admin/posts') ? 'class=active' : ''}}><a href="{{route('posts.index')}}">Listado</a></li>
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="#"><i class="fas fa-tags"></i> <span>Etiquetas</span>
             <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
